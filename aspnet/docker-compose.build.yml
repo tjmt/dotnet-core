@@ -1,0 +1,15 @@
+# docker-compose -f docker-compose.build.yml build
+# docker-compose -f docker-compose.build.yml push
+
+version: '3.5'
+services:
+  tjmt-dotnet-core-aspnet:
+    image: tjmt/dotnetcore:aspnet-${DOT_NET_CORE_ASPNET_VERSION}
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      args:
+        DOT_NET_CORE_ASPNET_VERSION: ${DOT_NET_CORE_ASPNET_VERSION}
+        TimeZone: ${TIMEZONE}
+        Language: ${LANGUAGE}
+        Unicode: ${UNICODE}
