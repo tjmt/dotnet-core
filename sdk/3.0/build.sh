@@ -2,14 +2,11 @@ export SONAR_SCANNER_NUGET_VERSION="4.6.2"
 export SONAR_SCANNER_BIN_VERSION="3.3.0.1492"
 export SONAR_SCANNER_NETCORE_VERSION="netcoreapp2.1"
 export REPORTGENERATOR_NUGET_VERSION="4.2.12"
-export RESULT_PATH="/TestResults/result/vsTest/"
-export COVERAGE_PATH="/TestResults/codecoverage/"
-export COVERAGE_REPORT_PATH="/TestResults/codecoverage/Report/"
 export DOT_NET_CORE_SDK_VERSION="3.0"
 
 echo "------------------------------------------------------"
 echo "docker-compose build $DOT_NET_CORE_SDK_VERSION"
-docker-compose -f ./docker-compose.build.yml build
+docker-compose -f ../docker-compose.build.yml build
 echo "------------------------------------------------------"
 
 echo

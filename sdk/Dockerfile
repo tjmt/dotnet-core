@@ -17,12 +17,10 @@ ARG SONAR_SCANNER_NUGET_VERSION
 ARG SONAR_SCANNER_BIN_VERSION
 ARG SONAR_SCANNER_NETCORE_VERSION
 ARG REPORTGENERATOR_NUGET_VERSION
-ARG RESULT_PATH
-ARG COVERAGE_PATH
-ARG COVERAGE_REPORT_PATH
-ENV RESULT_PATH=$RESULT_PATH
-ENV COVERAGE_PATH=$COVERAGE_PATH
-ENV COVERAGE_REPORT_PATH=$COVERAGE_REPORT_PATH
+
+ENV RESULT_PATH="/TestResults/result/vsTest/"
+ENV COVERAGE_PATH="/TestResults/codecoverage/"
+ENV COVERAGE_REPORT_PATH="/TestResults/codecoverage/Report/"
 #----------------------------------------------------------------------------------------------#
 
 #--------------------------------------Configura o TimeZone------------------------------------#
