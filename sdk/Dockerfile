@@ -1,5 +1,3 @@
-#https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
-
 #--------------------------------------Imagem base --------------------------------------------#
 # Configuração e instalação de ferramentas necessárias
 #----------------------------------------------------------------------------------------------#
@@ -14,27 +12,14 @@ FROM mcr.microsoft.com/dotnet/core/sdk:$DOT_NET_CORE_SDK_VERSION as base
 RUN apt-get update && apt-get install -y openjdk-8-jre
 #----------------------------------------------------------------------------------------------#
 
-ARG HTTP_PROXY
-ARG HTTPS_PROXY
 ARG TimeZone
 ARG SONAR_SCANNER_NUGET_VERSION
 ARG SONAR_SCANNER_BIN_VERSION
 ARG SONAR_SCANNER_NETCORE_VERSION
 ARG REPORTGENERATOR_NUGET_VERSION
-ARG NUGET_SOURCE_EXTERNO
-ARG NUGET_SOURCE_INTERNO
-ARG SONAR_HOST_URL
-ARG SONAR_LOGIN
 ARG RESULT_PATH
 ARG COVERAGE_PATH
 ARG COVERAGE_REPORT_PATH
-
-ENV NUGET_SOURCE_EXTERNO=$NUGET_SOURCE_EXTERNO
-ENV NUGET_SOURCE_INTERNO=$NUGET_SOURCE_INTERNO
-ENV SONAR_HOST_URL=$SONAR_HOST_URL
-ENV SONAR_LOGIN=$SONAR_LOGIN
-ENV HTTP_PROXY=$HTTP_PROXY
-ENV HTTPS_PROXY=$HTTPS_PROXY
 ENV RESULT_PATH=$RESULT_PATH
 ENV COVERAGE_PATH=$COVERAGE_PATH
 ENV COVERAGE_REPORT_PATH=$COVERAGE_REPORT_PATH
@@ -55,12 +40,6 @@ RUN chmod +x /root/.dotnet/tools/.store/dotnet-sonarscanner/${SONAR_SCANNER_NUGE
 
 #--------------------------------------Copiando arquivos sh------------------------------------#
 COPY /entrypoint/ /entrypoint/
-COPY /utils/ /utils/
-
 RUN chmod +x /entrypoint/entrypoint.sh \
-            /entrypoint/wait-for-it.sh \
-            /utils/nuget-config-creator.sh   
-
-#Criar arquivo /root/.nuget/NuGet/NuGet.Config
-RUN /utils/nuget-config-creator.sh || exit 0;
+            /entrypoint/wait-for-it.sh            
 #----------------------------------------------------------------------------------------------#
