@@ -18,5 +18,14 @@ export COVERAGE_PATH="/TestResults/codecoverage/"
 export COVERAGE_REPORT_PATH="/TestResults/codecoverage/Report/"
 
 export DOT_NET_CORE_SDK_VERSION="2.2.202"
+
+echo "docker-compose build"
+echo "------------------------------------------------------"
 docker-compose -f ../docker-compose.build.yml build
-docker-compose -f ../docker-compose.build.yml push
+echo "------------------------------------------------------"
+
+echo
+echo "------------------------------------------------------"
+echo "docker push tjmt/dotnetcore:sdk-$DOT_NET_CORE_SDK_VERSION"
+docker push tjmt/dotnetcore:sdk-$DOT_NET_CORE_SDK_VERSION
+echo "------------------------------------------------------"

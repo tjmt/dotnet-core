@@ -34,18 +34,17 @@ if [[ ${RUN_TEST} = "true" ]]; then
     echo "-------------------------------------------------------"
     echo "dotnet properties"
     echo "SOLUTION_NAME: $SOLUTION_NAME"
-    echo "CONFIGURATION: $CONFIGURATION"
     echo "RESULT_PATH: $RESULT_PATH"
     echo "COVERAGE_PATH: $COVERAGE_PATH"
-    echo "CoverletOutputFormat: $CoverletOutputFormat"
+    echo "COVERLET_OUTPUT_FORMAT: $CoverletOutputFormat"
     echo "COVERAGE_REPORT_PATH: $COVERAGE_REPORT_PATH"
     echo "-------------------------------------------------------"
 
     #necessário rodar o dotnet build entre o begin e end do sonarqube
-    echo 'Iniciando dotnet build'
-    dotnet build $SOLUTION_NAME -c ${CONFIGURATION} -v m --no-restore
+    echo "Iniciando dotnet build $SOLUTION_NAME"
+    dotnet build $SOLUTION_NAME -v m --no-restore
 
-    echo 'Iniciando dotnet test'
+    echo "Iniciando dotnet test $SOLUTION_NAME"
     #https://github.com/tonerdo/coverlet/issues/37  => Coverage report is not generated if there are any failing tests
     dotnet test $SOLUTION_NAME --no-build --no-restore -v m --logger "trx;LogFileName=TestResults.trx" --results-directory $RESULT_PATH /p:CollectCoverage=true /p:CoverletOutput=$COVERAGE_PATH "/p:CoverletOutputFormat=\"${CoverletOutputFormat}\"" || true;
 
