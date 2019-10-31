@@ -10,7 +10,7 @@ export SONAR_SCANNER_NUGET_VERSION="4.6.2"
 export SONAR_SCANNER_BIN_VERSION="3.3.0.1492"
 export SONAR_SCANNER_NETCORE_VERSION="netcoreapp2.1"
 export REPORTGENERATOR_NUGET_VERSION="4.2.12"
-
+export OPENJDK_VERSION="openjdk-8-jre"
 export DOT_NET_CORE_SDK_VERSION="2.2.202"
 
 echo "------------------------------------------------------"

@@ -3,13 +3,12 @@
 #----------------------------------------------------------------------------------------------#
 ARG DOT_NET_CORE_SDK_VERSION
 FROM mcr.microsoft.com/dotnet/core/sdk:$DOT_NET_CORE_SDK_VERSION as base
-
+ARG OPENJDK_VERSION
 #--------------------------------------Instalar o java-----------------------------------------#
 #Necessário para o sonarqube
 #https://community.sonarsource.com/t/sonarscanner-fails-with-error-permission-denied/1897
 #https://community.sonarsource.com/t/c-sonarscanner-net-core-version-permission-denied-error-in-docker/8354
-#openjdk-8-jdk
-RUN apt-get update && apt-get install -y openjdk-8-jre
+RUN apt-get update && apt-get install -y $OPENJDK_VERSION
 #----------------------------------------------------------------------------------------------#
 
 ARG TimeZone
