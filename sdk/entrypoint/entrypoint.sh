@@ -12,7 +12,7 @@ if [[ ${RUN_TEST} = "true" ]]; then
 
     #Análise de T-SQL code
     #https://marketplace.visualstudio.com/items?itemName=Ubitsoft.sql-enlight-vsts-extension
-    if [[ ${RUN_SONARQUBE} != "" ]]; then
+    if [[ ${RUN_SONARQUBE} = "true" ]]; then
         
         echo "-------------------------------------------------------"
         echo "Sonar properties"
@@ -55,9 +55,9 @@ if [[ ${RUN_TEST} = "true" ]]; then
     
     #https://danielpalme.github.io/ReportGenerator/usage.html
     echo 'Iniciando reportgenerator'
-    reportgenerator "-reports:$COVERAGE_PATH/coverage.cobertura.xml" "-targetdir:$COVERAGE_REPORT_PATH" -reporttypes:"HTMLInline" "-verbosity:Error" -verbosity:Error || true;
+    reportgenerator "-reports:${COVERAGE_PATH}coverage.cobertura.xml" "-targetdir:$COVERAGE_REPORT_PATH" -reporttypes:"HTMLInline" -verbosity:Error || true;
 
-    if [[ ${RUN_SONARQUBE} != "" ]]; then
+    if [[ ${RUN_SONARQUBE} = "true" ]]; then
         dotnet sonarscanner end /d:sonar.login="${SONAR_LOGIN}" || true;    
     fi
 fi
