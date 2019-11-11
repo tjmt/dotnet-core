@@ -11,6 +11,7 @@ RUN ln -snf /usr/share/zoneinfo/$TimeZone /etc/localtime && echo $TimeZone > /et
 
 #Configurando linguagem
 RUN apt-get update && \
+    apt-get install tzdata && \
     apt-get install -y locales locales-all && \
     locale-gen ${Language}.${Unicode} && \
     update-locale LANG=${Language}.${Unicode}
