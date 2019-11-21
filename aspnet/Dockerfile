@@ -11,11 +11,9 @@ RUN ln -snf /usr/share/zoneinfo/$TimeZone /etc/localtime && echo $TimeZone > /et
 
 #Configurando linguagem
 RUN apt-get update && \
-    apt-get install --no-install-recommends -y \
-        tzdata \
-        locales locales-all \
+    apt-get install --no-install-recommends -y tzdata locales locales-all && \
         locale-gen ${Language}.${Unicode} && \
-    update-locale LANG=${Language}.${Unicode}
+        update-locale LANG=${Language}.${Unicode}
     
 #---------Configura o TLS Min Protocol Version para v1
 RUN sed -i 's/DEFAULT@SECLEVEL=2/DEFAULT@SECLEVEL=1/g' /etc/ssl/openssl.cnf
