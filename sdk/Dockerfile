@@ -39,4 +39,4 @@ RUN chmod +x /root/.dotnet/tools/.store/dotnet-sonarscanner/${SONAR_SCANNER_NUGE
 COPY /entrypoint/ /entrypoint/
 RUN chmod +x /entrypoint/entrypoint.sh \
             /entrypoint/wait-for-it.sh            
-#----------------------------------------------------------------------------------------------#
+#----------------------------------------------------------------------------------------------# 
