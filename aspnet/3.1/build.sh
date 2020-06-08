@@ -3,7 +3,7 @@ export TIMEZONE="America/Sao_Paulo"
 export LANGUAGE="pt_BR"
 export UNICODE="UTF-8"
 
-export DOT_NET_CORE_ASPNET_VERSION="3.0"
+export DOT_NET_CORE_ASPNET_VERSION="3.1"
 
 echo "------------------------------------------------------"
 echo "docker-compose build $DOT_NET_CORE_ASPNET_VERSION"

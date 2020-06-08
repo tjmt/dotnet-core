@@ -11,6 +11,8 @@ ARG OPENJDK_VERSION
 RUN apt-get update && apt-get install -y $OPENJDK_VERSION
 #----------------------------------------------------------------------------------------------#
 
+
+
 ARG TimeZone
 ARG SONAR_SCANNER_NUGET_VERSION
 ARG SONAR_SCANNER_BIN_VERSION
@@ -24,6 +26,13 @@ ENV COVERAGE_REPORT_PATH="/TestResults/codecoverage/Report/"
 
 #--------------------------------------Configura o TimeZone------------------------------------#
 RUN ln -snf /usr/share/zoneinfo/$TimeZone /etc/localtime && echo $TimeZone > /etc/timezone
+#----------------------------------------------------------------------------------------------#
+
+#--------------------------------------Configura o TLS Min Protocol Version para v1------------#
+RUN sed -i 's/DEFAULT@SECLEVEL=2/DEFAULT@SECLEVEL=1/g' /etc/ssl/openssl.cnf
+RUN sed -i 's/MinProtocol = TLSv1.2/MinProtocol = TLSv1/g' /etc/ssl/openssl.cnf
+RUN sed -i 's/DEFAULT@SECLEVEL=2/DEFAULT@SECLEVEL=1/g' /usr/lib/ssl/openssl.cnf
+RUN sed -i 's/MinProtocol = TLSv1.2/MinProtocol = TLSv1/g' /usr/lib/ssl/openssl.cnf
 #----------------------------------------------------------------------------------------------#
 
 #--------------------------------------Instalando ferramentas globalmente----------------------#
