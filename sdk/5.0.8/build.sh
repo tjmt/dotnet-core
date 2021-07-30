@@ -5,7 +5,7 @@ export SONAR_SCANNER_BIN_VERSION="4.3.0.2102"
 export SONAR_SCANNER_NETCORE_VERSION="netcoreapp3.0"
 export REPORTGENERATOR_NUGET_VERSION="4.6.1"
 export OPENJDK_VERSION="default-jre"
-export DOT_NET_CORE_SDK_VERSION="5.0.8"
+export DOT_NET_CORE_SDK_VERSION="5.0"
 
 echo "------------------------------------------------------"
 echo "docker-compose build $DOT_NET_CORE_SDK_VERSION"
