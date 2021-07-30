@@ -2,7 +2,7 @@
 # Configuração e instalação de ferramentas necessárias
 #----------------------------------------------------------------------------------------------#
 ARG DOT_NET_CORE_SDK_VERSION
-FROM mcr.microsoft.com/dotnet/core/sdk:$DOT_NET_CORE_SDK_VERSION as base
+FROM mcr.microsoft.com/dotnet/sdk:$DOT_NET_CORE_SDK_VERSION as base
 ARG OPENJDK_VERSION
 #--------------------------------------Instalar o java-----------------------------------------#
 #Necessário para o sonarqube
@@ -47,5 +47,5 @@ RUN chmod +x /root/.dotnet/tools/.store/dotnet-sonarscanner/${SONAR_SCANNER_NUGE
 #--------------------------------------Copiando arquivos sh------------------------------------#
 COPY /entrypoint/ /entrypoint/
 RUN chmod +x /entrypoint/entrypoint.sh \
-            /entrypoint/wait-for-it.sh            
+            /entrypoint/wait-for-it.sh
 #----------------------------------------------------------------------------------------------#
