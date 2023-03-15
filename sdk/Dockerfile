@@ -13,8 +13,6 @@ RUN mkdir -p /usr/share/man/man1
 RUN apt-get update && apt-get install -y $OPENJDK_VERSION
 #----------------------------------------------------------------------------------------------#
 
-
-
 ARG TimeZone
 ARG SONAR_SCANNER_NUGET_VERSION
 ARG SONAR_SCANNER_BIN_VERSION
