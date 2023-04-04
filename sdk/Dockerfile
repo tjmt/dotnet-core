@@ -18,6 +18,7 @@ ARG SONAR_SCANNER_NUGET_VERSION
 ARG SONAR_SCANNER_BIN_VERSION
 ARG SONAR_SCANNER_NETCORE_VERSION
 ARG REPORTGENERATOR_NUGET_VERSION
+ARG DOTNET_COVERAGE_NUGET_VERSION
 
 ENV RESULT_PATH="/TestResults/result/vsTest/"
 ENV COVERAGE_PATH="/TestResults/codecoverage/"
@@ -39,7 +40,8 @@ RUN sed -i 's/MinProtocol = TLSv1.2/MinProtocol = TLSv1/g' /usr/lib/ssl/openssl.
 #https://www.nuget.org/packages/dotnet-sonarscanner/
 #https://www.nuget.org/packages/dotnet-reportgenerator-globaltool/
 RUN dotnet tool install --global dotnet-sonarscanner --version ${SONAR_SCANNER_NUGET_VERSION} && \
-    dotnet tool install --global dotnet-reportgenerator-globaltool --version ${REPORTGENERATOR_NUGET_VERSION}
+    dotnet tool install --global dotnet-reportgenerator-globaltool --version ${REPORTGENERATOR_NUGET_VERSION} && \
+    dotnet tool install --global dotnet-coverage --version ${DOTNET_COVERAGE_NUGET_VERSION}
 ENV PATH "$PATH:/root/.dotnet/tools/"
 RUN chmod +x /root/.dotnet/tools/.store/dotnet-sonarscanner/${SONAR_SCANNER_NUGET_VERSION}/dotnet-sonarscanner/${SONAR_SCANNER_NUGET_VERSION}/tools/${SONAR_SCANNER_NETCORE_VERSION}/any/sonar-scanner-${SONAR_SCANNER_BIN_VERSION}/bin/sonar-scanner
 #----------------------------------------------------------------------------------------------#
