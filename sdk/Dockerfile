@@ -23,6 +23,7 @@ ARG DOTNET_COVERAGE_NUGET_VERSION
 ENV RESULT_PATH="/TestResults/result/vsTest/"
 ENV COVERAGE_PATH="/TestResults/codecoverage/"
 ENV COVERAGE_REPORT_PATH="/TestResults/codecoverage/Report/"
+ENV CHECK_QUALITY=15
 #----------------------------------------------------------------------------------------------#
 
 #--------------------------------------Configura o TimeZone------------------------------------#
